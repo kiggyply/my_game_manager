@@ -1,0 +1,1 @@
+ game/libgame_basic.a database/libgame_db.a event/libgame_event.a database/libgame_db.a game/libgame_basic.a "D:/1-work_space/project/my_game/Opensource/sqlite-amalgamation/sqlite3.dll" -lkernel32 -luser32 -lgdi32 -lwinspool -lshell32 -lole32 -loleaut32 -luuid -lcomdlg32 -ladvapi32 

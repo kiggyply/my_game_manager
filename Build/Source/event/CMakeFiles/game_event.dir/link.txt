@@ -1,0 +1,2 @@
+C:\MinGW\bin\ar.exe qc libgame_event.a CMakeFiles/game_event.dir/EventManager.cpp.obj
+C:\MinGW\bin\ranlib.exe libgame_event.a
