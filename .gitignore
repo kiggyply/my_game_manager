@@ -1,3 +1,5 @@
 .vscode/
 Build/
 *.exe
+*.dll
+*.dll.a
