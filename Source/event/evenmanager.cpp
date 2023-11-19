@@ -14,6 +14,7 @@ void ExeInit::globalInit(){
     for (const auto& gameName : gameLists) {
         // 获得游戏的存档路径
         string gameSavePath = getGameSavePath(userInfo, db, gameName);
+        cout << "游戏存档路径" << gameSavePath << endl;
         if (gameSavePath.empty()) {
             continue;
         }
@@ -39,18 +40,7 @@ bool MapSavePath(UserInfo userInfo, string gameSavePath, string gameName) {
         std::cerr << "目录创建失败: " << e.what() << std::endl;
     }
     // 如果原游戏存档存在内容，将其移动到新存档目录下
-    if (fs::exists(gameSavePath) 
-        && fs::is_directory(gameSavePath) 
-        && ! fs::is_empty(gameSavePath)) {
-        try {
-            for (const auto& entry : fs::directory_iterator(gameSavePath)) {
-                fs::rename(entry.path(), newGameSavePath);
-                std::cout << gameName << " 原存档移动成功。" << std::endl;
-            }
-        }  catch (const std::exception& e) {
-            std::cerr << "移动失败: " << e.what() << std::endl;
-        }
-    }
+    PathMove(gameSavePath, newGameSavePath);
     // 创建软链接
     string mklinkCommand = "mklink /D \"" + gameSavePath + "\" \"" + newGameSavePath + "\"";
     int result = std::system(mklinkCommand.c_str());
@@ -79,8 +69,13 @@ string getGameSavePath(UserInfo userInfo, SQLiteDB db, string gameName) {
         cout << gameName << "的存档路径是：" << gameSavePath << endl;
         return gameSavePath;
     }
-    // 处理相对路径的情况
-    
+    // 处理存档是直接在游戏内的相对路径的情况
+    pos = gameSavePath.find("{gameRelatePath}");
+    if (pos != string::npos) {
+        // 将子串{gameRelatePath}替换为project/Games/
+        gameSavePath.replace(pos, string("{gameRelatePath}").length(), userInfo.projectRootDir + "/Games");
+        cout << gameName << "的存档路径是：" << gameSavePath << endl;
+    }
     return gameSavePath;
 };
 

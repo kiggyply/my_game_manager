@@ -1,4 +1,4 @@
-add_library(event_static STATIC evenmanager.cpp)
+add_library(event_static STATIC evenmanager.cpp fileutils.cpp)
 
 target_include_directories(event_static PRIVATE
     ${SOURCE_ROOT_DIR}/user
@@ -7,7 +7,7 @@ target_include_directories(event_static PRIVATE
 )
 
 target_link_libraries(event_static PRIVATE
-    game_db_shared
+    gamedb
     user_shared
 )
 

@@ -1,5 +1,6 @@
 .vscode/
 Build/
+Games/
 *.exe
 *.dll
 *.dll.a

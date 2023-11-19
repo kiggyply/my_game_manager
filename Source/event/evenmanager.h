@@ -23,4 +23,9 @@ vector<string> getLocGameLists(const string* projectRootDir);
 // 根据游戏名从数据库中获得对应存档路径
 string getGameSavePath(UserInfo obj, SQLiteDB db, string gameName);
 
+// 目录内容移动
+bool PathMove(string oldPath, string newPath);
+
+bool judgeCopyByTime(const string& sourceFile, const string& destinationFile);
+
 #endif

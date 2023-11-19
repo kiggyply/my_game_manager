@@ -22,7 +22,7 @@ add_custom_target(install_my_targets
     COMMAND "${CMAKE_COMMAND}" --build "${CMAKE_BINARY_DIR}" --target install
     DEPENDS
         start
-        game_db_shared
+        gamedb
         user_shared
         event_static
 )
