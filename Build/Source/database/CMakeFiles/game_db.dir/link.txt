@@ -1,2 +1,0 @@
-C:\MinGW\bin\ar.exe qc libgame_db.a CMakeFiles/game_db.dir/database.cpp.obj
-C:\MinGW\bin\ranlib.exe libgame_db.a

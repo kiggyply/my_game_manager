@@ -1,2 +1,0 @@
-C:\MinGW\bin\ar.exe qc libgame_basic.a CMakeFiles/game_basic.dir/game_base.cpp.obj CMakeFiles/game_basic.dir/specific_game.cpp.obj
-C:\MinGW\bin\ranlib.exe libgame_basic.a

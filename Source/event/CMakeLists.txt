@@ -1,17 +1,14 @@
-add_library(game_event STATIC
-    EventManager.cpp
+add_library(event_static STATIC evenmanager.cpp)
+
+target_include_directories(event_static PRIVATE
+    ${SOURCE_ROOT_DIR}/user
+    ${SOURCE_ROOT_DIR}/db
+    ${OPEN_SOURCE_DIR}
 )
 
-target_include_directories(game_event PRIVATE
-    ${PROJECT_ROOT_DIR}/Source/game/
-    ${PROJECT_ROOT_DIR}/Source/event/
-    ${PROJECT_ROOT_DIR}/Source/database/
-    ${CMAKE_CURRENT_LIST_DIR}
-    ${SQLITE_ROOT_DIR}
-    ${OPENSRC_ROOT_DIR}
+target_link_libraries(event_static PRIVATE
+    game_db_shared
+    user_shared
 )
 
-target_link_libraries(game_event PUBLIC
-    game_basic
-    game_db
-)
+add_dependencies(event_static user_shared user_shared)
